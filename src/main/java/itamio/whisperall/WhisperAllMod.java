@@ -19,7 +19,7 @@ public class WhisperAllMod {
     public void onRegisterCommands(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("whisperall")
             .requires(s -> s.hasPermission(0))
-            .then(Commands.argument("message", com.mojang.brigadier.arguments.StringArgumentType.greedyPhrase())
+            .then(Commands.argument("message", com.mojang.brigadier.arguments.StringArgumentType.word())
                 .executes(ctx -> { String msg = ctx.getArgument("message", String.class); ctx.getSource().getServer().getPlayerList().broadcastSystemMessage(Component.literal("[WhisperAll] " + msg), false); return 1; })));
     }
 }
